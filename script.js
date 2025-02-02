@@ -6,12 +6,28 @@ window.onload = function () {
 
   if (lat) document.getElementById('latitude').value = lat;
   if (lng) document.getElementById('longitude').value = lng;
+
+  registeredLocation = getLocation();
+  updateDisplayedLocation();
 };
 
 let registeredLocation = {
   lat: null,
   lng: null,
 };
+
+// 登録位置をローカルストレージに保存
+function saveLocation(lat, lng) {
+  const location = { lat, lng };
+  localStorage.setItem('registeredLocation', JSON.stringify(location));
+  return location;
+}
+
+// 登録位置を取得
+function getLocation() {
+  const saved = localStorage.getItem('registeredLocation');
+  return saved ? JSON.parse(saved) : { lat: null, lng: null };
+}
 
 // フォーム送信時の処理
 document
@@ -22,7 +38,7 @@ document
     const lng = document.getElementById('longitude').value;
 
     // 値を保存
-    registeredLocation = { lat, lng };
+    registeredLocation = saveLocation(lat, lng);
 
     // 画面に表示
     updateDisplayedLocation();
@@ -46,5 +62,5 @@ function setLocation(lat, lng) {
 
 // APIエンドポイントとして機能
 window.getRegisteredLocation = function () {
-  return registeredLocation;
+  return getLocation();
 };

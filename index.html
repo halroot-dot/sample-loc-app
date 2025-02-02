@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Location Input</title>
     <link rel="stylesheet" href="styles.css">
+    <script>
+        // APIエンドポイントとしての設定
+        if (window.location.pathname === '/api/location') {
+            const response = JSON.stringify(window.getRegisteredLocation());
+            document.write(response);
+            document.close();
+        }
+    </script>
 </head>
 <body>
     <div class="container">
