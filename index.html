@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location Input</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>位置情報入力</h1>
+        <form id="locationForm">
+            <div class="input-group">
+                <label for="latitude">緯度:</label>
+                <input type="number" id="latitude" name="lat" step="0.000001" required>
+            </div>
+            <div class="input-group">
+                <label for="longitude">経度:</label>
+                <input type="number" id="longitude" name="lng" step="0.000001" required>
+            </div>
+            <button type="submit">登録</button>
+        </form>
+
+        <div class="registered-location">
+            <h2>登録された位置情報</h2>
+            <div id="currentLocation">
+                未登録
+            </div>
+        </div>
+
+        <div class="preset-buttons">
+            <h2>プリセット位置</h2>
+            <button onclick="setLocation(35.681236, 139.767125)">東京駅</button>
+            <button onclick="setLocation(35.658584, 139.745431)">東京タワー</button>
+            <button onclick="setLocation(35.710063, 139.810700)">スカイツリー</button>
+            <button onclick="setLocation(35.628611, 139.738889)">明治神宮</button>
+            <button onclick="setLocation(35.715498, 139.773871)">上野公園</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
